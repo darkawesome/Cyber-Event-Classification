@@ -24,7 +24,7 @@ from scipy import sparse
 # importing the data
 # since the other one I would've used as a test doesn't have the same amount of cols I have to split the data I do have
 
-df = pd.read_csv("/home/banana/Documents/Code/Cyber-AI/umspp-export-2024-08-26.xlsx - Sheet 1.csv")
+df = pd.read_csv("/home/INSERT FILE HERE")
 
 # Select target columns
 target_columns = ["event_type", "actor_type", "industry","motive"] 
