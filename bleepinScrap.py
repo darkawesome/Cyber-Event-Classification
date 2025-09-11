@@ -21,11 +21,9 @@ from datetime import datetime
 #
 ##########################################################################################
 
-# Function to clean the summary field
+# Function to clean the summary 
 def clean_summary(summary):
-    # Remove HTML tags using a regex
     summary = re.sub(r'<[^>]+>', '', summary)
-    # Replace multiple spaces or newlines with a single space
     summary = re.sub(r'\s+', ' ', summary).strip()
     return summary
 
@@ -58,7 +56,7 @@ def fetch_rss_data(url, unique_rows):
                     'summary': cleaned_summary
                 }
 
-# List of RSS feed URLs
+
 rss_feed_urls = [
     "https://www.bleepingcomputer.com/feed/",
     "https://krebsonsecurity.com/feed/",
@@ -68,10 +66,10 @@ rss_feed_urls = [
     "https://www.wired.com/feed/category/security/latest/rss"
 ]
 
-# Dictionary to store unique rows
+
 unique_rows = {}
 
-# Fetch data
+
 for url in rss_feed_urls:
     fetch_rss_data(url, unique_rows)
 
