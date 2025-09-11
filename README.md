@@ -8,6 +8,9 @@ This project is an automated system for collecting, classifying, and analyzing c
 2. **Text Classification**: Uses machine learning to categorize news articles
 3. **Data Aggregation**: Stores classified information in a structured CSV format
 
+
+![Summary](https://github.com/darkawesome/blog/blob/main/content/img/CyberClassifi/SysMap.png?raw=true)
+
 ## Components
 
 The project consists of four main Python scripts:
@@ -128,5 +131,6 @@ The `output.csv` will contain the following columns:
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
+
 
 MIT
