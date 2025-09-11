@@ -31,13 +31,10 @@ def main_function():
         print("One or more required models could not be loaded. Please make sure all model files exist.")
         return  # Exit the function but don't terminate the process with exit()
 
-    # Load the OneHotEncoder if you saved it, otherwise we'll need to recreate it
-    # Note: In your training script you didn't save the encoder, so we need to recreate it
-    # You might want to add dump(encoder, "onehotencoder.joblib") to your training script
     encoder = load_model('onehotencoder.joblib')
     if encoder is None:
         print("OneHotEncoder not found, will handle categorical features differently.")
-        # We'll continue with the script
+       
 
     label_encoder_event_type = load_model('event_type_label_encoder.joblib')
     label_encoder_actor_type = load_model('actor_type_label_encoder.joblib')
@@ -45,18 +42,14 @@ def main_function():
     label_encoder_motive = load_model('motive_label_encoder.joblib')
     label_encoder_event_subtype = load_model('event_subtype_label_encoder.joblib')
 
-    # Example: Predict fields for a new description
+    
     new_description = input("Enter the description: ")
     
     # Process text with TF-IDF and SVD, same as in training
     X_new_tfidf = tfidf.transform([new_description])
     X_new_tfidf_reduced = svd.transform(X_new_tfidf)
 
-    # Since we're making predictions for a new text entry without known categories,
-    # we need to create placeholder values for the categorical and numeric features
-    
-    # For categorical features: create a feature vector of appropriate size 
-    # First, we need to know how many features the model is expecting
+   
     expected_features = rf_event_type.n_features_in_
     tfidf_reduced_features = X_new_tfidf_reduced.shape[1]  # Should be 2500
     
@@ -94,14 +87,14 @@ def main_function():
     event_subtype_encoded = rf_event_subtype.predict(X_new_combined)
     event_subtype = label_encoder_event_subtype.inverse_transform(event_subtype_encoded)
 
-    # Display predictions
+    
     print(f"Predicted event type: {event_type[0]}")
     print(f"Predicted actor type: {actor_type[0]}")
     print(f"Predicted industry: {industry[0]}")
     print(f"Predicted motive: {motive[0]}")
     print(f"Predicted event subtype: {event_subtype[0]}")
 
-    # Define the path to the testpilot.csv file
+    
     testpilot_file = "testpilot.csv"
 
     # Read the year and month from testpilot.csv
@@ -110,7 +103,7 @@ def main_function():
             with open(testpilot_file, mode='r', newline='', encoding='utf-8') as file:
                 reader = csv.DictReader(file)
                 for row in reader:
-                    # Assuming you want to pull the first row's year and month
+                    
                     year = row.get('year', None)
                     month = row.get('month', None)
                     return year, month
@@ -118,14 +111,13 @@ def main_function():
             print(f"Error: {testpilot_file} not found.")
             return None, None
 
-    # Get year and month from testpilot.csv
+    
     new_data_year, new_data_month = get_year_and_month_from_testpilot()
 
     if not new_data_year or not new_data_month:
         print("Year and month could not be retrieved from testpilot.csv. Please check the file.")
         return
 
-    # Use the predictions
     new_data_event_type = event_type[0]
     new_data_actor_type = actor_type[0]
     new_data_industry = industry[0]
@@ -138,10 +130,10 @@ def main_function():
         "Mining,Quarring and Oil and Gas Extraction": 21,
         "Utilities": 22,
         "Construction": 23,
-        "Manufacturing": "31-33",  # Fixed string format
+        "Manufacturing": "31-33",  # Fixed 
         "Wholesale Trade": 42,
-        "Retail Trade": "44-45",    # Fixed string format
-        "Transportation and Warehousing": "48-49",  # Fixed string format
+        "Retail Trade": "44-45",    # Fixed 
+        "Transportation and Warehousing": "48-49",  # Fixed 
         "Information": 51,
         "Finance and Insurance": 52,
         "Real Estate and Rental and Leasing": 53,
@@ -166,8 +158,7 @@ def main_function():
     if confirm != 'y':
         print("Please re-run the script and provide the correct values.")
         return
-
-    # Ask the user for additional input
+        
     new_data_slug = input("Enter the slug: ")
     new_data_actor = input("Enter the actor: ")
     new_data_organization = input("Enter the organization: ")
