@@ -1,6 +1,10 @@
 # Cyber Event Classifier and RSS Data Aggregator
 
+### *Disclaimer*
+### In making this tool there was some vibe coding at points
+
 ## Project Overview
+
 
 This project is an automated system for collecting, classifying, and analyzing cybersecurity-related news articles using machine learning. The system performs the following key functions:
 
