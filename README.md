@@ -5,7 +5,6 @@
 
 ## Project Overview
 
-
 This project is an automated system for collecting, classifying, and analyzing cybersecurity-related news articles using machine learning. The system performs the following key functions:
 
 1. **RSS Feed Scraping**: Collects cybersecurity news from multiple sources
@@ -110,23 +109,11 @@ The `output.csv` will contain the following columns:
 - country
 - actor_country
 
-## Customization
-
-- Modify `rss_feed_urls` in `Conductor.py` to add or remove news sources
-- Adjust the machine learning model parameters in `RandomFore.py`
-- Add custom filtering in `bleepinScrap.py`
-
 ## Notes
 
 - The system requires an initial training dataset
-- Performance improves with more training data
-- Periodically retrain the model to maintain accuracy
+- The initail training run does take some time. I added code comments to let you know what stage in the process you are in
 
-## Limitations
-
-- Accuracy depends on the quality and diversity of training data
-- May not capture all nuanced cybersecurity events
-- Requires manual verification of predictions
 
 ## Contributing
 
